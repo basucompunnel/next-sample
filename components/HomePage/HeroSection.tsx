@@ -4,7 +4,6 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { IoChevronForward } from 'react-icons/io5';
 import { getAssetPath } from '@/lib/utils';
-import { getAssetPath } from '@/lib/utils';
 
 function HeroTitle() {
   return (
