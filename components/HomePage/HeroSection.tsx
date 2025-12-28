@@ -1,7 +1,10 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { IoChevronForward } from 'react-icons/io5';
+import { getAssetPath } from '@/lib/utils';
+import { getAssetPath } from '@/lib/utils';
 
 function HeroTitle() {
   return (
@@ -44,10 +47,13 @@ function HeroActions() {
 function HeroImage() {
   return (
     <div className="w-full -mt-16">
-      <img 
-        src="/assets/images/hero-section.png"
+      <Image 
+        src={getAssetPath('/assets/images/hero-section.png')}
         alt="Linear App Interface"
+        width={1200}
+        height={800}
         className="w-full h-auto"
+        priority
       />
     </div>
   );

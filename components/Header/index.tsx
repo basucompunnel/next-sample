@@ -1,17 +1,19 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
+import { getAssetPath } from '@/lib/utils';
 import ProductDropdown from './ProductDropdown';
 import ResourcesDropdown from './ResourcesDropdown';
 
 function Logo() {
   return (
     <Link href="/" className="flex items-center gap-2 text-white font-semibold text-xl">
-      <img 
-        src="/assets/images/linear-app-logo.png" 
+      <Image 
+        src={getAssetPath('/assets/images/linear-app-logo.png')} 
         alt="Linear Logo" 
-        width="24" 
-        height="24"
+        width={24} 
+        height={24}
         className="object-contain"
       />
       Linear

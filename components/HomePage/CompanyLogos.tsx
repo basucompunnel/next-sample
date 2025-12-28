@@ -1,8 +1,11 @@
 'use client';
 
+import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
 import { IoChevronForward } from 'react-icons/io5';
+import { getAssetPath } from '@/lib/utils';
+import { getAssetPath } from '@/lib/utils';
 
 function LogosHeading() {
   return (
@@ -26,9 +29,11 @@ function LogosImage() {
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      <img
-        src="/assets/images/company-logos.png"
+      <Image
+        src={getAssetPath('/assets/images/company-logos.png')}
         alt="Company Logos"
+        width={1200}
+        height={400}
         className={`h-auto w-full transition-all duration-300 ${isHovered ? 'blur-sm' : ''}`}
       />
 

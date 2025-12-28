@@ -1,4 +1,6 @@
 import Link from 'next/link';
+import Image from 'next/image';
+import { getAssetPath } from '@/lib/utils';
 
 type FooterLink = {
   href: string;
@@ -14,11 +16,11 @@ function FooterLogo() {
   return (
     <div className="col-span-2 md:col-span-1">
       <Link href="/" className="inline-block">
-        <img 
-          src="/assets/images/linear-app-logo.png" 
+        <Image 
+          src={getAssetPath('/assets/images/linear-app-logo.png')} 
           alt="Linear Logo" 
-          width="32" 
-          height="32"
+          width={32} 
+          height={32}
           className="object-contain"
         />
       </Link>
