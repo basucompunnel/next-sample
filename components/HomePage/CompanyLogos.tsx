@@ -5,7 +5,6 @@ import Link from 'next/link';
 import { useState } from 'react';
 import { IoChevronForward } from 'react-icons/io5';
 import { getAssetPath } from '@/lib/utils';
-import { getAssetPath } from '@/lib/utils';
 
 function LogosHeading() {
   return (
