@@ -1,5 +1,3 @@
-import Link from 'next/link';
-
 function CoreFeatures() {
   const features = [
     {
@@ -19,14 +17,13 @@ function CoreFeatures() {
       <h4 className="text-gray-400 text-xs font-semibold mb-3 uppercase">Core Features</h4>
       <div className="space-y-2">
         {features.map((feature) => (
-          <Link 
+          <div
             key={feature.href}
-            href={feature.href} 
-            className="block group/item hover:bg-gray-800/50 p-2 rounded-md transition-colors"
+            className="block group/item hover:bg-gray-800/50 p-2 rounded-md transition-colors cursor-pointer"
           >
             <div className="text-white font-semibold mb-0.5 text-sm">{feature.title}</div>
             <div className="text-gray-400 text-xs">{feature.description}</div>
-          </Link>
+          </div>
         ))}
       </div>
     </div>
@@ -72,14 +69,13 @@ function MoreFeatures() {
       <h4 className="text-gray-400 text-xs font-semibold mb-3 uppercase">More</h4>
       <div className="grid grid-cols-2 gap-x-4 gap-y-2">
         {features.map((feature) => (
-          <Link 
+          <div
             key={feature.href}
-            href={feature.href} 
-            className="block group/item hover:bg-gray-800/50 p-2 rounded-md transition-colors"
+            className="block group/item hover:bg-gray-800/50 p-2 rounded-md transition-colors cursor-pointer"
           >
             <div className="text-white font-semibold mb-0.5 text-sm">{feature.title}</div>
             <div className="text-gray-400 text-xs">{feature.description}</div>
-          </Link>
+          </div>
         ))}
       </div>
     </div>
@@ -93,9 +89,9 @@ function BottomBanner() {
         <span className="text-white font-semibold text-sm">New: Team owners</span>
         <span className="text-gray-400 text-xs">Permissions for team-level settings</span>
       </div>
-      <Link href="/changelog" className="text-blue-500 hover:text-blue-400 font-semibold text-xs transition-colors">
+      <span className="text-blue-500 hover:text-blue-400 font-semibold text-xs transition-colors cursor-pointer">
         Changelog
-      </Link>
+      </span>
     </div>
   );
 }

@@ -1,5 +1,3 @@
-import Link from 'next/link';
-
 function CompanySection() {
   const links = [
     {
@@ -19,14 +17,13 @@ function CompanySection() {
       <h4 className="text-gray-400 text-xs font-semibold mb-3 uppercase">Company</h4>
       <div className="space-y-2">
         {links.map((link) => (
-          <Link 
+          <div
             key={link.href}
-            href={link.href} 
-            className="block group/item hover:bg-gray-800/50 p-2 rounded-md transition-colors"
+            className="block group/item hover:bg-gray-800/50 p-2 rounded-md transition-colors cursor-pointer"
           >
             <div className="text-white font-semibold mb-0.5 text-sm">{link.title}</div>
             <div className="text-gray-400 text-xs">{link.description}</div>
-          </Link>
+          </div>
         ))}
       </div>
     </div>
@@ -57,14 +54,13 @@ function ExploreSection() {
       <h4 className="text-gray-400 text-xs font-semibold mb-3 uppercase">Explore</h4>
       <div className="space-y-2">
         {links.map((link) => (
-          <Link 
+          <div
             key={link.href}
-            href={link.href} 
-            className="block group/item hover:bg-gray-800/50 p-2 rounded-md transition-colors"
+            className="block group/item hover:bg-gray-800/50 p-2 rounded-md transition-colors cursor-pointer"
           >
             <div className="text-white font-semibold mb-0.5 text-sm">{link.title}</div>
             <div className="text-gray-400 text-xs">{link.description}</div>
-          </Link>
+          </div>
         ))}
       </div>
     </div>
@@ -94,14 +90,13 @@ function MoreSection() {
     <div>
       <div className="space-y-2">
         {links.map((link) => (
-          <Link 
+          <div
             key={link.href}
-            href={link.href} 
-            className="block group/item hover:bg-gray-800/50 p-2 rounded-md transition-colors"
+            className="block group/item hover:bg-gray-800/50 p-2 rounded-md transition-colors cursor-pointer"
           >
             <div className="text-white font-semibold mb-0.5 text-sm">{link.title}</div>
             <div className="text-gray-400 text-xs">{link.description}</div>
-          </Link>
+          </div>
         ))}
       </div>
     </div>
