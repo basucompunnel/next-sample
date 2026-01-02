@@ -1,51 +1,16 @@
-import Link from 'next/link';
-import Image from 'next/image';
-import { getAssetPath } from '@/lib/utils';
+import FooterLogo from './FooterLogo';
+import FooterColumn from './FooterColumn';
+import { FooterSection } from './types';
 
-type FooterLink = {
-  href: string;
-  label: string;
-};
-
-type FooterSection = {
-  title: string;
-  links: FooterLink[];
-};
-
-function FooterLogo() {
-  return (
-    <div className="col-span-2 md:col-span-1">
-      <Link href="/" className="inline-block">
-        <Image 
-          src={getAssetPath('/assets/images/linear-app-logo.png')} 
-          alt="Linear Logo" 
-          width={32} 
-          height={32}
-          className="object-contain"
-        />
-      </Link>
-    </div>
-  );
-}
-
-function FooterColumn({ title, links }: FooterSection) {
-  return (
-    <div>
-      <h3 className="text-white font-semibold mb-4">{title}</h3>
-      <ul className="space-y-3 text-sm">
-        {links.map((link) => (
-          <li key={link.href}>
-            <Link href={link.href} className="hover:text-white transition-colors">
-              {link.label}
-            </Link>
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
-}
-
+/**
+ * Main Footer component
+ * - Displays site navigation organized into 5 main categories
+ * - Features a responsive grid layout (2 columns mobile, 6 columns desktop)
+ * - Contains logo and comprehensive link sections
+ * - All links are non-functional (demo purposes)
+ */
 export default function Footer() {
+  // Footer navigation organized by categories
   const footerSections: FooterSection[] = [
     {
       title: 'Features',
@@ -110,8 +75,11 @@ export default function Footer() {
   return (
     <footer className="bg-black border-t border-gray-800 text-gray-400">
       <div className="max-w-5xl mx-auto px-6 py-16">
+        {/* Responsive grid: 2 columns on mobile, 6 columns on desktop */}
         <div className="grid grid-cols-2 md:grid-cols-6 gap-8">
+          {/* Logo takes first column */}
           <FooterLogo />
+          {/* Map through sections to create footer columns */}
           {footerSections.map((section) => (
             <FooterColumn key={section.title} title={section.title} links={section.links} />
           ))}
