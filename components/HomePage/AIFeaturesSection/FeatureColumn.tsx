@@ -1,10 +1,20 @@
-'use client';
-
 import Image from 'next/image';
-import { getAssetPath } from '@/lib/utils';
-import { useState, useEffect, useRef } from 'react';
 
-function FeatureColumn({
+/**
+ * Feature column with cascading animations
+ * - Container fades in with blur effect, staggered by index (200ms intervals)
+ * - Title slides in from left (100ms after container)
+ * - Description slides in from left (200ms after container)
+ * - Image slides in from opposite sides: left column from left, right column from right
+ * - Image has scale and brightness increase on hover
+ * - All animations coordinated with progressive delays for smooth cascade
+ * @param title - Feature heading text
+ * @param description - Feature description text
+ * @param imageSrc - Path to feature image
+ * @param index - Column position (0 = left, 1 = right) for stagger timing and slide direction
+ * @param isVisible - Controls animation trigger from intersection observer
+ */
+export default function FeatureColumn({
   title,
   description,
   imageSrc,
@@ -79,53 +89,6 @@ function FeatureColumn({
               }}
             />
           </div>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-export default function AIFeaturesSection() {
-  const [isVisible, setIsVisible] = useState(false);
-  const sectionRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setIsVisible(true);
-          }
-        });
-      },
-      { threshold: 0.15 }
-    );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => observer.disconnect();
-  }, []);
-
-  return (
-    <div className="py-24" ref={sectionRef}>
-      <div className="mx-auto w-full max-w-5xl px-6">
-        <div className="grid gap-24 md:grid-cols-2">
-          <FeatureColumn
-            title="Self-driving product operations"
-            description="Streamline your product development workflows with AI assistance for routine, manual tasks."
-            imageSrc={getAssetPath('/assets/images/self-driving-product-operations.png')}
-            index={0}
-            isVisible={isVisible}
-          />
-          <FeatureColumn
-            title="Linear MCP"
-            description="Connect Linear to your favorite tools including Cursor, Claude, ChatGPT, and more."
-            imageSrc={getAssetPath('/assets/images/linear-mcp.png')}
-            index={1}
-            isVisible={isVisible}
-          />
         </div>
       </div>
     </div>

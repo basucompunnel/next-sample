@@ -18,7 +18,6 @@ export default function HomePage() {
     <div className="bg-black">
       <HeroSection />
       <CompanyLogos />
-      
       <ModernTeamsSection />
       <AISection />
       <AIFeaturesSection />
@@ -28,6 +27,7 @@ export default function HomePage() {
       <ProjectCapabilitiesSection />
       <IssueTrackingSection />
       <WorkflowSection />
+      
       <LinearInsightsSection />
       <FoundationsSection />
       <CTASection />

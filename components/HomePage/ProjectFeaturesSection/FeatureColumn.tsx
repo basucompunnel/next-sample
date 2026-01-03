@@ -1,10 +1,21 @@
-'use client';
-
 import Image from 'next/image';
 import { getAssetPath } from '@/lib/utils';
-import { useState, useEffect, useRef } from 'react';
 
-function WorkflowColumn({ 
+/**
+ * Feature column with cascading animations
+ * - Container fades in with blur effect, staggered by index (200ms intervals)
+ * - Title slides in from left (100ms after container)
+ * - Description slides in from left (200ms after container)
+ * - Image slides in symmetrically: left column from left, right column from right
+ * - Image has scale and brightness increase on hover (105% scale, 110% brightness)
+ * - All animations coordinated with progressive delays for smooth cascade
+ * @param title - Feature heading text
+ * @param description - Feature description text
+ * @param imageSrc - Path to feature image
+ * @param index - Column position (0 = left, 1 = right) for stagger timing and slide direction
+ * @param isVisible - Controls animation trigger from intersection observer
+ */
+export default function FeatureColumn({ 
   title, 
   description, 
   imageSrc,
@@ -67,53 +78,6 @@ function WorkflowColumn({
             transitionDelay: `${index * 200 + 400}ms`
           }}
         />
-      </div>
-    </div>
-  );
-}
-
-export default function WorkflowSection() {
-  const [isVisible, setIsVisible] = useState(false);
-  const sectionRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setIsVisible(true);
-          }
-        });
-      },
-      { threshold: 0.15 }
-    );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => observer.disconnect();
-  }, []);
-
-  return (
-    <div className="py-24" ref={sectionRef}>
-      <div className="mx-auto w-full max-w-5xl px-6">
-        <div className="grid gap-24 md:grid-cols-2">
-          <WorkflowColumn
-            title="Build momentum with Cycles"
-            description="Create healthy routines and focus your team on what work should happen next."
-            imageSrc="/assets/images/build-momentum-with-cycles.png"
-            index={0}
-            isVisible={isVisible}
-          />
-          <WorkflowColumn
-            title="Manage incoming work with Triage"
-            description="Review and assign incoming bug reports, feature requests, and other unplanned work."
-            imageSrc="/assets/images/manage-incoming-work-with-triage.png"
-            index={1}
-            isVisible={isVisible}
-          />
-        </div>
       </div>
     </div>
   );

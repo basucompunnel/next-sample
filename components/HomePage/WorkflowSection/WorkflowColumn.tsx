@@ -1,10 +1,21 @@
-'use client';
-
 import Image from 'next/image';
 import { getAssetPath } from '@/lib/utils';
-import { useState, useEffect, useRef } from 'react';
 
-function FeatureColumn({ 
+/**
+ * Workflow column with cascading animations
+ * - Container fades in with blur effect, staggered by index (200ms intervals)
+ * - Title slides in from left (100ms after container)
+ * - Description slides in from left (200ms after container)
+ * - Image slides in symmetrically: left column from left, right column from right
+ * - Image has scale and brightness increase on hover (105% scale, 110% brightness)
+ * - All animations coordinated with progressive delays for smooth cascade
+ * @param title - Workflow heading text
+ * @param description - Workflow description text
+ * @param imageSrc - Path to workflow image
+ * @param index - Column position (0 = left, 1 = right) for stagger timing and slide direction
+ * @param isVisible - Controls animation trigger from intersection observer
+ */
+export default function WorkflowColumn({ 
   title, 
   description, 
   imageSrc,
@@ -67,53 +78,6 @@ function FeatureColumn({
             transitionDelay: `${index * 200 + 400}ms`
           }}
         />
-      </div>
-    </div>
-  );
-}
-
-export default function ProjectFeaturesSection() {
-  const [isVisible, setIsVisible] = useState(false);
-  const sectionRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setIsVisible(true);
-          }
-        });
-      },
-      { threshold: 0.15 }
-    );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => observer.disconnect();
-  }, []);
-
-  return (
-    <div className="py-24" ref={sectionRef}>
-      <div className="mx-auto w-full max-w-5xl px-6">
-        <div className="grid gap-24 md:grid-cols-2">
-          <FeatureColumn
-            title="Manage projects end-to-end"
-            description="Consolidate specs, milestones, tasks, and other documentation in one centralized location."
-            imageSrc="/assets/images/manage-projects-end-to-end.png"
-            index={0}
-            isVisible={isVisible}
-          />
-          <FeatureColumn
-            title="Project updates"
-            description="Communicate progress and project health with built-in project updates."
-            imageSrc="/assets/images/project-updates.png"
-            index={1}
-            isVisible={isVisible}
-          />
-        </div>
       </div>
     </div>
   );
