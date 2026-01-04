@@ -65,13 +65,13 @@ export default function Modal({ isOpen, onClose, title, imageSrc, featureId }: M
 
   return (
     <div
-      className={`fixed inset-0 z-50 flex items-center justify-center bg-black p-4 transition-opacity duration-800 will-change-[opacity] ${
+      className={`fixed inset-0 z-50 flex items-center justify-center bg-black p-2 sm:p-4 transition-opacity duration-800 will-change-[opacity] ${
         isAnimating ? 'opacity-100' : 'opacity-0'
       }`}
       onClick={onClose}
     >
       <div
-        className={`relative max-h-[90vh] w-full max-w-4xl overflow-y-auto rounded-3xl bg-black px-12 py-4 transition-all duration-800 will-change-[transform,opacity] ${
+        className={`relative max-h-[95vh] sm:max-h-[90vh] w-full max-w-4xl overflow-y-auto rounded-2xl sm:rounded-3xl bg-black px-4 sm:px-8 lg:px-12 py-4 transition-all duration-800 will-change-[transform,opacity] ${
           isAnimating ? 'scale-100 opacity-100' : 'scale-95 opacity-0'
         }`}
         onClick={(e) => e.stopPropagation()}

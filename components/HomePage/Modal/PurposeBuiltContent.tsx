@@ -4,12 +4,13 @@
  * - Emphasizes ease of use with scalability
  * - Includes Vercel company testimonial with triangle logo
  * - Statistics: 20k customers, 500k+ users, 45% YC companies, 66% top AI startups
- * - Four-stat grid layout in testimonial box
+ * - Responsive grid: stacks on mobile (1 col), 2 cols on desktop
+ * - Fully responsive for mobile and desktop
  */
 export default function PurposeBuiltContent() {
   return (
     <>
-      <div className="-mb-6 space-y-6 text-base text-gray-400 px-24">
+      <div className="-mb-4 sm:-mb-6 space-y-4 sm:space-y-6 text-sm sm:text-base text-gray-400 px-6 sm:px-12 lg:px-24">
         <p>
           Linear was developed with a specific purpose: to empower product teams to do their best
           work. Every aspect is intentionally designed to help teams focus on what they do best:
@@ -27,32 +28,32 @@ export default function PurposeBuiltContent() {
         </p>
       </div>
 
-      <div className="-mb-6 rounded-2xl bg-black/50 p-32">
-        <p className="mb-6 text-center text-xl text-gray-300">
+      <div className="-mb-4 sm:-mb-6 rounded-xl sm:rounded-2xl bg-black/50 p-6 sm:p-16 lg:p-32">
+        <p className="mb-4 sm:mb-6 text-center text-base sm:text-lg lg:text-xl text-gray-300">
           "We'd tried many tools before Linear but none of them felt like they were made for the
           way we work. Linear was a breath of fresh air - speedy, snappy, and a pleasure to use."
         </p>
-        <div className="mb-8 flex items-center justify-center gap-2 text-white">
-          <span className="text-2xl">▲</span>
-          <span className="text-2xl font-semibold">Vercel</span>
+        <div className="mb-6 sm:mb-8 flex items-center justify-center gap-2 text-white">
+          <span className="text-xl sm:text-2xl">▲</span>
+          <span className="text-xl sm:text-2xl font-semibold">Vercel</span>
         </div>
 
-        <div className="grid grid-cols-2 gap-8 text-center">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 text-center">
           <div>
-            <div className="mb-2 text-6xl font-semibold text-white">20k</div>
-            <div className="text-gray-400">Paying customers</div>
+            <div className="mb-2 text-4xl sm:text-5xl lg:text-6xl font-semibold text-white">20k</div>
+            <div className="text-xs sm:text-sm text-gray-400">Paying customers</div>
           </div>
           <div>
-            <div className="mb-2 text-6xl font-semibold text-white">500k+</div>
-            <div className="text-gray-400">Active users</div>
+            <div className="mb-2 text-4xl sm:text-5xl lg:text-6xl font-semibold text-white">500k+</div>
+            <div className="text-xs sm:text-sm text-gray-400">Active users</div>
           </div>
           <div>
-            <div className="mb-2 text-6xl font-semibold text-white">45%</div>
-            <div className="text-gray-400">of YC companies build with Linear</div>
+            <div className="mb-2 text-4xl sm:text-5xl lg:text-6xl font-semibold text-white">45%</div>
+            <div className="text-xs sm:text-sm text-gray-400">of YC companies build with Linear</div>
           </div>
           <div>
-            <div className="mb-2 text-6xl font-semibold text-white">66%</div>
-            <div className="text-gray-400">of the top AI startups use Linear</div>
+            <div className="mb-2 text-4xl sm:text-5xl lg:text-6xl font-semibold text-white">66%</div>
+            <div className="text-xs sm:text-sm text-gray-400">of the top AI startups use Linear</div>
           </div>
         </div>
       </div>

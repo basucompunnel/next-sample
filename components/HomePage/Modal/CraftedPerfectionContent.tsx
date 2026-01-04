@@ -4,11 +4,12 @@
  * - Philosophy on building exceptional software products
  * - Includes Watershed company testimonial
  * - Focuses on unrivaled delight and polish
+ * - Fully responsive for mobile and desktop
  */
 export default function CraftedPerfectionContent() {
   return (
     <>
-      <div className="-mb-6 space-y-6 text-base text-gray-400 px-24">
+      <div className="-mb-4 sm:-mb-6 space-y-4 sm:space-y-6 text-sm sm:text-base text-gray-400 px-6 sm:px-12 lg:px-24">
         <p>
           We believe that there is a lost art of building software. A craftsmanship that yields
           products of an exceptional, almost magical, quality.
@@ -30,13 +31,13 @@ export default function CraftedPerfectionContent() {
         <p>Bringing back product experiences of the highest level of quality.</p>
       </div>
 
-      <div className="-mb-6 rounded-2xl bg-black/50 p-32">
-        <p className="mb-6 text-center text-xl text-gray-300">
+      <div className="-mb-4 sm:-mb-6 rounded-xl sm:rounded-2xl bg-black/50 p-6 sm:p-16 lg:p-32">
+        <p className="mb-4 sm:mb-6 text-center text-base sm:text-lg lg:text-xl text-gray-300">
           "In a world of clunky, slow, and bloated tools, Linear reverses the script on all three
           and adds an unrivaled level of delight and polish."
         </p>
-        <div className="mb-8 flex items-center justify-center gap-2 text-white">
-          <span className="text-2xl font-semibold">Watershed</span>
+        <div className="mb-6 sm:mb-8 flex items-center justify-center gap-2 text-white">
+          <span className="text-xl sm:text-2xl font-semibold">Watershed</span>
         </div>
       </div>
     </>

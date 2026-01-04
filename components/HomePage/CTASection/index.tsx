@@ -10,7 +10,7 @@ import GetStartedButton from './GetStartedButton';
  * - Final conversion point with dual CTA buttons
  * - Word-by-word heading animation (80ms stagger) for dramatic entrance
  * - Single intersection observer (20% threshold) triggers all animations
- * - Horizontal layout: heading on left, buttons on right
+ * - Responsive layout: stacked on mobile, horizontal on desktop
  * - Animation sequence:
  *   1. Heading words appear one by one (0ms, 80ms, 160ms, etc.)
  *   2. "Contact sales" button (500ms delay) - secondary style
@@ -44,15 +44,15 @@ export default function CTASection() {
   }, []);
 
   return (
-    <div className="py-24" ref={sectionRef}>
+    <div className="py-16 sm:py-24" ref={sectionRef}>
       <div className="mx-auto w-full max-w-5xl px-6">
-        {/* Horizontal layout: heading on left, CTA buttons on right */}
-        <div className="flex items-center justify-between">
+        {/* Responsive layout: stacked on mobile, horizontal on desktop */}
+        <div className="flex flex-col md:flex-row items-center justify-between gap-6 md:gap-8">
           {/* Heading with word-by-word animation (80ms stagger) */}
           <CTAHeading isVisible={isVisible} />
           
           {/* Dual CTA buttons: secondary (Contact sales) and primary (Get started) */}
-          <div className="flex items-center gap-4">
+          <div className="flex flex-col sm:flex-row items-center gap-3 sm:gap-4 w-full sm:w-auto">
             <ContactSalesButton isVisible={isVisible} />
             <GetStartedButton isVisible={isVisible} />
           </div>
