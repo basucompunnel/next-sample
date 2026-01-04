@@ -3,98 +3,22 @@
 import Image from 'next/image';
 import { IoChevronForward } from 'react-icons/io5';
 import { getAssetPath } from '@/lib/utils';
-import { LuCircle, LuLayers, LuFilter, LuFlame } from 'react-icons/lu';
 import { useState, useEffect, useRef } from 'react';
+import { features } from './features';
+import FeatureCard from './FeatureCard';
 
-const features = [
-  {
-    icon: LuCircle,
-    title: 'Tailored workflows',
-    description: 'Track progress across custom issue flows for your team.',
-  },
-  {
-    icon: LuLayers,
-    title: 'Custom views',
-    description: 'Switch between list and board. Group issues with swimlanes.',
-  },
-  {
-    icon: LuFilter,
-    title: 'Filters',
-    description: "Refine issue lists down to what's most relevant to you.",
-  },
-  {
-    icon: LuFlame,
-    title: 'SLAs',
-    description: 'Automatically apply deadlines to time-sensitive tasks.',
-  },
-];
-
-function FeatureCard({
-  feature,
-  index,
-  isVisible,
-}: {
-  feature: typeof features[0];
-  index: number;
-  isVisible: boolean;
-}) {
-  const Icon = feature.icon;
-
-  return (
-    <div
-      className={`group cursor-pointer transition-all duration-1000 ${
-        isVisible
-          ? 'opacity-100 translate-y-0 blur-0'
-          : 'opacity-0 translate-y-12 blur-md'
-      }`}
-      style={{
-        transitionDelay: `${index * 150}ms`,
-      }}
-    >
-      <div
-        className={`mb-4 transition-all duration-800 ${
-          isVisible
-            ? 'opacity-100 rotate-0 scale-100'
-            : 'opacity-0 -rotate-45 scale-50'
-        }`}
-        style={{
-          transitionDelay: `${index * 150 + 100}ms`,
-        }}
-      >
-        <Icon className="h-6 w-6 text-white transition-all duration-500 group-hover:scale-125 group-hover:text-purple-400 group-hover:rotate-12" />
-      </div>
-
-      <h3
-        className={`mb-2 text-lg font-semibold text-white transition-all duration-800 group-hover:text-purple-300 ${
-          isVisible
-            ? 'opacity-100 translate-x-0'
-            : 'opacity-0 -translate-x-8'
-        }`}
-        style={{
-          transitionDelay: `${index * 150 + 200}ms`,
-        }}
-      >
-        {feature.title}
-      </h3>
-
-      <p
-        className={`text-sm text-gray-400 transition-all duration-800 group-hover:text-gray-300 ${
-          isVisible
-            ? 'opacity-100 translate-x-0'
-            : 'opacity-0 -translate-x-8'
-        }`}
-        style={{
-          transitionDelay: `${index * 150 + 300}ms`,
-        }}
-      >
-        {feature.description}
-      </p>
-
-      <div className="mt-3 h-0.5 w-0 bg-gradient-to-r from-purple-400 to-pink-400 transition-all duration-500 group-hover:w-full" />
-    </div>
-  );
-}
-
+/**
+ * Linear Insights section component with dual intersection observers
+ * - Showcases analytics and reporting capabilities
+ * - Unique dual observer pattern: separate triggers for header and image/cards
+ * - Header observer (20% threshold): triggers heading, description, and button animations
+ * - Image observer (10% threshold): triggers image and feature cards independently
+ * - Header section: heading → description → button (100ms, 200ms delays)
+ * - Image: Large showcase with dramatic entrance (1.5s duration, -mt-32 for overlap)
+ * - Four feature cards in grid (1 col mobile, 4 cols desktop) with purple/pink theme
+ * - Cards triggered by image observer for synchronized entrance
+ * - Purple/pink gradient theme distinguishes from blue project capabilities section
+ */
 export default function LinearInsightsSection() {
   const [isVisible, setIsVisible] = useState(false);
   const [imageVisible, setImageVisible] = useState(false);
@@ -102,6 +26,7 @@ export default function LinearInsightsSection() {
   const imageRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    // First observer: triggers header section animations (heading, description, button)
     const headerObserver = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -110,9 +35,10 @@ export default function LinearInsightsSection() {
           }
         });
       },
-      { threshold: 0.2 }
+      { threshold: 0.2 } // Trigger when 20% of header section is visible
     );
 
+    // Second observer: triggers image and feature cards animations independently
     const imageObserver = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -121,7 +47,7 @@ export default function LinearInsightsSection() {
           }
         });
       },
-      { threshold: 0.1 }
+      { threshold: 0.1 } // Trigger when 10% of image is visible for early animation
     );
 
     if (sectionRef.current) {
@@ -140,6 +66,7 @@ export default function LinearInsightsSection() {
 
   return (
     <div className="py-24">
+      {/* Header section with heading, description, and CTA button */}
       <div className="relative z-10 mx-auto w-full max-w-5xl px-6" ref={sectionRef}>
         <h2 
           className={`mb-4 text-3xl font-semibold text-white transition-all duration-1000 ${
@@ -174,6 +101,7 @@ export default function LinearInsightsSection() {
         </button>
       </div>
 
+      {/* Large showcase image with dramatic entrance and negative margin for visual overlap */}
       <div 
         ref={imageRef}
         className={`transition-all duration-1500 ${
@@ -193,6 +121,7 @@ export default function LinearInsightsSection() {
         </div>
       </div>
 
+      {/* Feature cards grid with purple/pink theme (triggered by image observer) */}
       <div className="mx-auto w-full max-w-5xl px-6">
         <div className="grid gap-12 md:grid-cols-4">
           {features.map((feature, index) => (
